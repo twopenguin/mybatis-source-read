@@ -44,6 +44,12 @@ public class Plugin implements InvocationHandler {
     this.signatureMap = signatureMap;
   }
 
+  /**
+   * 用我们写的插件来包装那四种类型
+   * @param target 需要包装的四个类
+   * @param interceptor 我们自己写的插件
+   * @return
+   */
   public static Object wrap(Object target, Interceptor interceptor) {
     //取得签名Map
     Map<Class<?>, Set<Method>> signatureMap = getSignatureMap(interceptor);
@@ -68,7 +74,7 @@ public class Plugin implements InvocationHandler {
       Set<Method> methods = signatureMap.get(method.getDeclaringClass());
       //看哪些方法需要拦截
       if (methods != null && methods.contains(method)) {
-        //调用Interceptor.intercept，也即插入了我们自己的逻辑
+        //这儿调用我们自己写插件逻辑
         return interceptor.intercept(new Invocation(target, method, args));
       }
       //最后还是执行原来逻辑
