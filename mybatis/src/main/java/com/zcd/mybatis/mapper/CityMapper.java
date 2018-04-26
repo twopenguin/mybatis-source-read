@@ -11,5 +11,4 @@ public interface CityMapper {
 
     List<City> getAll();
 //    City findByName(String cityName);
-
 }

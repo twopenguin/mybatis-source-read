@@ -22,6 +22,7 @@ public class Entrance {
         Reader reader = Resources.getResourceAsReader(resource);
         SqlSessionFactory sqlSessionFactory= new SqlSessionFactoryBuilder().build(reader);
         SqlSession sqlSession = sqlSessionFactory.openSession();
+        return sqlSession;
     }
 
 }

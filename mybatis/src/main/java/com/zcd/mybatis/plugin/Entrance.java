@@ -31,9 +31,8 @@ public class Entrance {
         String resource = "Configuration.xml";
         Reader reader = Resources.getResourceAsReader(resource);
 //         sqlSessionFactory= new SqlSessionFactoryBuilder().build(reader);
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader, "development");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
         SqlSession sqlSession = sqlSessionFactory.openSession();
         return sqlSession;
     }
-
 }
